@@ -76,8 +76,4 @@ This is the actual scraping backend that receives the agent’s request, perform
 
 ---
 
-## 🛠️ Setup Instructions
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/your-username/n8n-ai-scraping-agent.git
