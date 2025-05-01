@@ -1,0 +1,97 @@
+{
+  "name": "MCP server-Firecwal",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "66217d5f-71dc-43b1-8d39-e04e367b6ee1"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "66c8a543-624d-4a39-b51d-3279c981c8ac",
+      "name": "MCP Server Trigger",
+      "webhookId": "66217d5f-71dc-43b1-8d39-e04e367b6ee1"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Used to scrape a URL and get its content.",
+        "method": "POST",
+        "url": "https://api.firecrawl.dev/v1/scrape",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "parametersHeaders": {
+          "values": [
+            {
+              "name": "Content-Type",
+              "valueProvider": "fieldValue",
+              "value": "application/json"
+            },
+            {}
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n      \"url\": \"{url}\",\n      \"formats\" : [\"markdown\"]\n}",
+        "placeholderDefinitions": {
+          "values": [
+            {
+              "name": "url",
+              "description": "this is where you enter the url of the page that you  want to scrape",
+              "type": "string"
+            }
+          ]
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolHttpRequest",
+      "typeVersion": 1.1,
+      "position": [
+        100,
+        220
+      ],
+      "id": "37d30f0f-2002-4b77-95a9-010a2ac57487",
+      "name": "Scrape",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "AUNvVq8pfR9Yp5gq",
+          "name": "Firecrawal MCP server"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Scrape": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Server Trigger",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "964d995f-aa11-48c4-9116-265e6b49ff1d",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "5293dba5532b2a4f695d8e52e38c57f119914c2ef581c65c298c40ea54c60b2e"
+  },
+  "id": "3zzKNqHUg90sf8Qi",
+  "tags": [
+    {
+      "createdAt": "2025-05-01T09:31:36.623Z",
+      "updatedAt": "2025-05-01T09:31:36.623Z",
+      "id": "tjAqWl6OXxM58pOq",
+      "name": "MCO SERVER"
+    }
+  ]
+}
